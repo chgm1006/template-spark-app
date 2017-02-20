@@ -85,23 +85,24 @@ public class JavaSparkSQLExample {
         // $example on:init_session$
         SparkSession spark = SparkSession
                 .builder()
+                .master("local[1]")
                 .appName("Java Spark SQL basic example")
                 .config("spark.some.config.option", "some-value")
                 .getOrCreate();
         // $example off:init_session$
 
-        runBasicDataFrameExample(spark);
-        runDatasetCreationExample(spark);
+//        runBasicDataFrameExample(spark);
+//        runDatasetCreationExample(spark);
         runInferSchemaExample(spark);
-        runProgrammaticSchemaExample(spark);
+//        runProgrammaticSchemaExample(spark);
 
         spark.stop();
     }
 
     private static void runBasicDataFrameExample(SparkSession spark) throws AnalysisException {
         // $example on:create_df$
-        Dataset<Row> df = spark.read().json("examples/src/main/resources/people.json");
-
+        Dataset<Row> df = spark.read().json("src/main/resources/people.json");
+        System.out.println("runBasicDataFrameExample ============== ");
         // Displays the content of the DataFrame to stdout
         df.show();
         // +----+-------+
@@ -232,7 +233,7 @@ public class JavaSparkSQLExample {
         transformedDS.collect(); // Returns [2, 3, 4]
 
         // DataFrames can be converted to a Dataset by providing a class. Mapping based on name
-        String path = "examples/src/main/resources/people.json";
+        String path = "src/main/resources/people.json";
         Dataset<Person> peopleDS = spark.read().json(path).as(personEncoder);
         peopleDS.show();
         // +----+-------+
@@ -249,7 +250,7 @@ public class JavaSparkSQLExample {
         // $example on:schema_inferring$
         // Create an RDD of Person objects from a text file
         JavaRDD<Person> peopleRDD = spark.read()
-                .textFile("examples/src/main/resources/people.txt")
+                .textFile("src/main/resources/people.txt")
                 .javaRDD()
                 .map(new Function<String, Person>() {
                     @Override
@@ -267,6 +268,7 @@ public class JavaSparkSQLExample {
         // Register the DataFrame as a temporary view
         peopleDF.createOrReplaceTempView("people");
 
+        peopleDF.show();
         // SQL statements can be run by using the sql methods provided by spark
         Dataset<Row> teenagersDF = spark.sql("SELECT name FROM people WHERE age BETWEEN 13 AND 19");
 
@@ -305,7 +307,7 @@ public class JavaSparkSQLExample {
         // $example on:programmatic_schema$
         // Create an RDD
         JavaRDD<String> peopleRDD = spark.sparkContext()
-                .textFile("examples/src/main/resources/people.txt", 1)
+                .textFile("src/main/resources/people.txt", 1)
                 .toJavaRDD();
 
         // The schema is encoded in a string

@@ -42,6 +42,7 @@ public final class JavaWordCount {
 
         SparkSession spark = SparkSession
                 .builder()
+                .master("local[1]")
                 .appName("JavaWordCount")
                 .getOrCreate();
 
