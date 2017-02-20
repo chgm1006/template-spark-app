@@ -35,25 +35,13 @@ import java.util.regex.Pattern;
  */
 public final class JavaHdfsLR {
 
-    private static final int D = 10;   // Number of dimensions
-    private static final Random rand = new Random(42);
-
-    static void showWarning() {
-        String warning = "WARN: This is a naive implementation of Logistic Regression " +
-                "and is given as an example!\n" +
-                "Please use org.apache.spark.ml.classification.LogisticRegression " +
-                "for more conventional use.";
-        System.err.println(warning);
-    }
-
     static class DataPoint implements Serializable {
+        double[] x;
+        double y;
         DataPoint(double[] x, double y) {
             this.x = x;
             this.y = y;
         }
-
-        double[] x;
-        double y;
     }
 
     static class ParsePoint implements Function<String, DataPoint> {
@@ -98,6 +86,16 @@ public final class JavaHdfsLR {
             }
             return gradient;
         }
+    }
+    private static final int D = 10;   // Number of dimensions
+    private static final Random rand = new Random(42);
+
+    static void showWarning() {
+        String warning = "WARN: This is a naive implementation of Logistic Regression " +
+                "and is given as an example!\n" +
+                "Please use org.apache.spark.ml.classification.LogisticRegression " +
+                "for more conventional use.";
+        System.err.println(warning);
     }
 
     public static double dot(double[] a, double[] b) {

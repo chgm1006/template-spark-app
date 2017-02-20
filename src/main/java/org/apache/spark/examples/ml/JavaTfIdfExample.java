@@ -19,9 +19,6 @@ package org.apache.spark.examples.ml;
 
 // $example on$
 
-import java.util.Arrays;
-import java.util.List;
-
 import org.apache.spark.ml.feature.HashingTF;
 import org.apache.spark.ml.feature.IDF;
 import org.apache.spark.ml.feature.IDFModel;
@@ -34,6 +31,9 @@ import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.Metadata;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
+
+import java.util.Arrays;
+import java.util.List;
 // $example off$
 
 public class JavaTfIdfExample {

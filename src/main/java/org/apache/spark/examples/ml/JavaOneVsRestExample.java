@@ -25,8 +25,9 @@ import org.apache.spark.ml.classification.OneVsRestModel;
 import org.apache.spark.ml.evaluation.MulticlassClassificationEvaluator;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-// $example off$
 import org.apache.spark.sql.SparkSession;
+
+// $example off$
 
 
 /**

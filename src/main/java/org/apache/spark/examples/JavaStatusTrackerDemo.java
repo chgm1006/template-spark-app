@@ -25,7 +25,6 @@ import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.Function;
 import org.apache.spark.sql.SparkSession;
 
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -34,8 +33,6 @@ import java.util.List;
  */
 public final class JavaStatusTrackerDemo {
 
-    public static final String APP_NAME = "JavaStatusAPIDemo";
-
     public static final class IdentityWithDelay<T> implements Function<T, T> {
         @Override
         public T call(T x) throws Exception {
@@ -43,6 +40,7 @@ public final class JavaStatusTrackerDemo {
             return x;
         }
     }
+    public static final String APP_NAME = "JavaStatusAPIDemo";
 
     public static void main(String[] args) throws Exception {
         SparkSession spark = SparkSession

@@ -18,16 +18,16 @@ package org.apache.spark.examples.sql.hive;
 
 // $example on:spark_hive$
 
-import java.io.File;
-import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.spark.api.java.function.MapFunction;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Encoders;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
+
+import java.io.File;
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 // $example off:spark_hive$
 
 public class JavaSparkHiveExample {

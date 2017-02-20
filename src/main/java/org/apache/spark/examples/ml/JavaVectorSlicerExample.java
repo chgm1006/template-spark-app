@@ -17,13 +17,7 @@
 
 package org.apache.spark.examples.ml;
 
-import org.apache.spark.sql.SparkSession;
-
-// $example on$
-import java.util.List;
-
 import com.google.common.collect.Lists;
-
 import org.apache.spark.ml.attribute.Attribute;
 import org.apache.spark.ml.attribute.AttributeGroup;
 import org.apache.spark.ml.attribute.NumericAttribute;
@@ -32,7 +26,12 @@ import org.apache.spark.ml.linalg.Vectors;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.RowFactory;
-import org.apache.spark.sql.types.*;
+import org.apache.spark.sql.SparkSession;
+import org.apache.spark.sql.types.StructType;
+
+import java.util.List;
+
+// $example on$
 // $example off$
 
 public class JavaVectorSlicerExample {

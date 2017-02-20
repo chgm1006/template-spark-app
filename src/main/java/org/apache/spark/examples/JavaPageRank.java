@@ -17,15 +17,7 @@
 
 package org.apache.spark.examples;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Iterator;
-import java.util.regex.Pattern;
-
-import scala.Tuple2;
-
 import com.google.common.collect.Iterables;
-
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.function.Function;
@@ -33,6 +25,12 @@ import org.apache.spark.api.java.function.Function2;
 import org.apache.spark.api.java.function.PairFlatMapFunction;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.sql.SparkSession;
+import scala.Tuple2;
+
+import java.util.ArrayList;
+import java.util.Iterator;
+import java.util.List;
+import java.util.regex.Pattern;
 
 /**
  * Computes the PageRank of URLs from an input file. Input file should
@@ -52,6 +50,12 @@ import org.apache.spark.sql.SparkSession;
  * </pre>
  */
 public final class JavaPageRank {
+    private static class Sum implements Function2<Double, Double, Double> {
+        @Override
+        public Double call(Double a, Double b) {
+            return a + b;
+        }
+    }
     private static final Pattern SPACES = Pattern.compile("\\s+");
 
     static void showWarning() {
@@ -60,13 +64,6 @@ public final class JavaPageRank {
                 "Please use the PageRank implementation found in " +
                 "org.apache.spark.graphx.lib.PageRank for more conventional use.";
         System.err.println(warning);
-    }
-
-    private static class Sum implements Function2<Double, Double, Double> {
-        @Override
-        public Double call(Double a, Double b) {
-            return a + b;
-        }
     }
 
     public static void main(String[] args) throws Exception {

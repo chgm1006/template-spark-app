@@ -18,9 +18,6 @@ package org.apache.spark.examples.sql;
 
 // $example on:untyped_custom_aggregation$
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
 import org.apache.spark.sql.SparkSession;
@@ -30,6 +27,9 @@ import org.apache.spark.sql.types.DataType;
 import org.apache.spark.sql.types.DataTypes;
 import org.apache.spark.sql.types.StructField;
 import org.apache.spark.sql.types.StructType;
+
+import java.util.ArrayList;
+import java.util.List;
 // $example off:untyped_custom_aggregation$
 
 public class JavaUserDefinedUntypedAggregation {

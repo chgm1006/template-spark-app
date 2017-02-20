@@ -17,14 +17,6 @@
 
 package org.apache.spark.examples.streaming;
 
-import java.util.Arrays;
-import java.util.Iterator;
-import java.util.Map;
-import java.util.HashMap;
-import java.util.regex.Pattern;
-
-import scala.Tuple2;
-
 import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.api.java.function.Function;
@@ -36,6 +28,13 @@ import org.apache.spark.streaming.api.java.JavaPairDStream;
 import org.apache.spark.streaming.api.java.JavaPairReceiverInputDStream;
 import org.apache.spark.streaming.api.java.JavaStreamingContext;
 import org.apache.spark.streaming.kafka.KafkaUtils;
+import scala.Tuple2;
+
+import java.util.Arrays;
+import java.util.HashMap;
+import java.util.Iterator;
+import java.util.Map;
+import java.util.regex.Pattern;
 
 /**
  * Consumes messages from one or more topics in Kafka and does wordcount.

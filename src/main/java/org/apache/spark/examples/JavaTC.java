@@ -17,18 +17,13 @@
 
 package org.apache.spark.examples;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Random;
-import java.util.Set;
-
-import scala.Tuple2;
-
 import org.apache.spark.api.java.JavaPairRDD;
 import org.apache.spark.api.java.JavaSparkContext;
 import org.apache.spark.api.java.function.PairFunction;
 import org.apache.spark.sql.SparkSession;
+import scala.Tuple2;
+
+import java.util.*;
 
 /**
  * Transitive closure on a graph, implemented in Java.
@@ -36,6 +31,15 @@ import org.apache.spark.sql.SparkSession;
  */
 public final class JavaTC {
 
+    static class ProjectFn implements PairFunction<Tuple2<Integer, Tuple2<Integer, Integer>>,
+            Integer, Integer> {
+        static final ProjectFn INSTANCE = new ProjectFn();
+
+        @Override
+        public Tuple2<Integer, Integer> call(Tuple2<Integer, Tuple2<Integer, Integer>> triple) {
+            return new Tuple2<>(triple._2()._2(), triple._2()._1());
+        }
+    }
     private static final int numEdges = 200;
     private static final int numVertices = 100;
     private static final Random rand = new Random(42);
@@ -51,16 +55,6 @@ public final class JavaTC {
             }
         }
         return new ArrayList<>(edges);
-    }
-
-    static class ProjectFn implements PairFunction<Tuple2<Integer, Tuple2<Integer, Integer>>,
-            Integer, Integer> {
-        static final ProjectFn INSTANCE = new ProjectFn();
-
-        @Override
-        public Tuple2<Integer, Integer> call(Tuple2<Integer, Tuple2<Integer, Integer>> triple) {
-            return new Tuple2<>(triple._2()._2(), triple._2()._1());
-        }
     }
 
     public static void main(String[] args) {

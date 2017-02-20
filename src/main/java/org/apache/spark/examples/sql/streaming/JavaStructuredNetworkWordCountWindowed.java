@@ -18,7 +18,6 @@ package org.apache.spark.examples.sql.streaming;
 
 import org.apache.spark.api.java.function.FlatMapFunction;
 import org.apache.spark.sql.*;
-import org.apache.spark.sql.functions;
 import org.apache.spark.sql.streaming.StreamingQuery;
 import scala.Tuple2;
 

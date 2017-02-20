@@ -35,6 +35,7 @@ public final class JavaSparkPi {
     public static void main(String[] args) throws Exception {
         SparkSession spark = SparkSession
                 .builder()
+                .master("local[1]")
                 .appName("JavaSparkPi")
                 .getOrCreate();
 

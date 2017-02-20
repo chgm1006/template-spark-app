@@ -27,8 +27,9 @@ import org.apache.spark.ml.tuning.TrainValidationSplit;
 import org.apache.spark.ml.tuning.TrainValidationSplitModel;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-// $example off$
 import org.apache.spark.sql.SparkSession;
+
+// $example off$
 
 /**
  * Java example demonstrating model selection using TrainValidationSplit.

@@ -19,20 +19,20 @@ package org.apache.spark.examples.mllib;
 
 // $example on$
 
-import java.util.Arrays;
-import java.util.List;
-
+import org.apache.spark.SparkConf;
 import org.apache.spark.api.java.JavaRDD;
 import org.apache.spark.api.java.JavaSparkContext;
-// $example off$
 import org.apache.spark.api.java.function.Function;
-// $example on$
 import org.apache.spark.mllib.fpm.AssociationRules;
 import org.apache.spark.mllib.fpm.FPGrowth;
 import org.apache.spark.mllib.fpm.FPGrowthModel;
-// $example off$
 
-import org.apache.spark.SparkConf;
+import java.util.Arrays;
+import java.util.List;
+
+// $example off$
+// $example on$
+// $example off$
 
 public class JavaSimpleFPGrowth {
 

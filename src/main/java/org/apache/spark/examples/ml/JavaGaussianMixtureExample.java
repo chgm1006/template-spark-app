@@ -23,8 +23,9 @@ import org.apache.spark.ml.clustering.GaussianMixture;
 import org.apache.spark.ml.clustering.GaussianMixtureModel;
 import org.apache.spark.sql.Dataset;
 import org.apache.spark.sql.Row;
-// $example off$
 import org.apache.spark.sql.SparkSession;
+
+// $example off$
 
 
 /**
